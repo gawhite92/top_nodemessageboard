@@ -16,13 +16,13 @@ const links = [
 const users = ["Bill", "Amy", "Bob", "Jane", "Chris", "Trevor", "Max", "Brigitte"];
 
 const messages = [
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Bob", added: datefns.format(new Date(), "dd/MM/yyyy") },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Amy", added: datefns.format(new Date(), "dd/MM/yyyy") },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Chris", added: datefns.format(new Date(), "dd/MM/yyyy") },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Trevor", added: datefns.format(new Date(), "dd/MM/yyyy") },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Bob", added: datefns.format(new Date(), "dd/MM/yyyy") },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Max", added: datefns.format(new Date(), "dd/MM/yyyy") },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Bob", added: datefns.format(new Date(), "dd/MM/yyyy") },
+    { id: 0, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Bob", added: datefns.format(new Date(), "dd/MM/yyyy") },
+    { id: 1, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Amy", added: datefns.format(new Date(), "dd/MM/yyyy") },
+    { id: 2, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Chris", added: datefns.format(new Date(), "dd/MM/yyyy") },
+    { id: 3, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Trevor", added: datefns.format(new Date(), "dd/MM/yyyy") },
+    { id: 4, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Bob", added: datefns.format(new Date(), "dd/MM/yyyy") },
+    { id: 5, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Max", added: datefns.format(new Date(), "dd/MM/yyyy") },
+    { id: 6, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum", user: "Bob", added: datefns.format(new Date(), "dd/MM/yyyy") },
 ]
 
 app.get("/", (req, res) => {
@@ -37,9 +37,14 @@ app.get("/new", (req, res) => {
 app.post("/new", (req, res) => {
     const messageText = req.body.messageText;
     const messageUser = req.body.messageUser;
-    messages.push({ text: messageText, user: messageUser, added: datefns.format(new Date(), "dd/MM/yyyy") })
+    messages.push({ id: messages.length, text: messageText, user: messageUser, added: datefns.format(new Date(), "dd/MM/yyyy") })
     res.redirect('/')
 });
+
+app.get('/message/:id', (req, res) => {
+    const id = req.params.id;
+    res.render('single', { title: 'Single Message', messageData: messages[id], links: links })
+})
 
 app.use((req, res) => {
     res.status(404).render('404', { title: '404', links: links })

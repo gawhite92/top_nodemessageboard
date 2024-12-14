@@ -1,0 +1,23 @@
+<html>
+
+<%- include('./partials/head', {links: links} ) %>
+
+    <body>
+        <h4>Message Details:</h4>
+        <div class="message id">
+            Message ID: <%= messageData.id %>
+        </div>
+        <div class="message user">
+            <%= messageData.user %>
+        </div>
+        <div class="message date">
+            <%= messageData.added %>
+        </div>
+        <div class="message text">
+            <%= messageData.text %>
+        </div>
+    </body>
+
+    <%- include('./partials/footer.ejs') %>
+
+</html>
