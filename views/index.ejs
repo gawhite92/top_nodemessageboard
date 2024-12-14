@@ -1,0 +1,35 @@
+<html>
+
+<%- include('./partials/head', {links: links} ) %>
+
+    <body>
+        <!-- <ul>
+            <% users.forEach((user)=> { %>
+                <li>
+                    <%= user %>
+                </li>
+                <% }); %>
+        </ul>  -->
+
+        <h4>Messages:</h4>
+
+        <ul>
+            <% messages.forEach((message)=> { %>
+                <li>
+                    <div class="message user">
+                        <%= message.user %>
+                    </div>
+                    <div class="message date">
+                        <%= message.added %>
+                    </div>
+                    <div class="message text">
+                        <%= message.text %>
+                    </div>
+                </li>
+                <% }); %>
+        </ul>
+    </body>
+
+    <%- include('./partials/footer.ejs') %>
+
+</html>

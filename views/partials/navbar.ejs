@@ -1,0 +1,19 @@
+<nav>
+    <div class="site-title">
+        <a href="/">
+            <h1>Message Board</h1>
+        </a>
+        <p>Node Test</p>
+    </div>
+    <ul>
+        <% for (let i=0; i < links.length; i++) { %>
+            <li>
+                <a href="<%= links[i].href %>">
+                    <span>
+                        <%= links[i].text %>
+                    </span>
+                </a>
+            </li>
+            <% } %>
+    </ul>
+</nav>

@@ -1,0 +1,18 @@
+<html>
+
+<%- include('./partials/head', {links: links} ) %>
+
+    <body>
+        <div class="create-message content">
+            <form method="POST" actions="/new">
+                <label for="messageUser">User:</label>
+                <input type="text" name="messageUser" id="messageUser" required>
+                <label for="messageText">Message:</label>
+                <textarea id="messageText" name="messageText" required></textarea>
+                <button>Submit</button>
+            </form>
+    </body>
+
+    <%- include('./partials/footer.ejs') %>
+
+</html>
