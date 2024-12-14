@@ -15,20 +15,21 @@
         <ul>
             <% if (messages.length> 0) {%>
                 <% messages.forEach((message)=> { %>
-                    <a class="single" href="/message/<%= message.id %>">
-                        <li>
-                            <div class="message user">
-                                <%= message.user %>
-                            </div>
-                            <div class="message date">
-                                <%= message.added %>
-                            </div>
-                            <div class="message text">
-                                <%= message.text.slice(0, 40) %>...
-                            </div>
-                            <button>Details</button>
-                    </a>
+                    <li>
+                        <div class="message user">
+                            <%= message.user %>
+                        </div>
+                        <div class="message date">
+                            <%= message.added %>
+                        </div>
+                        <div class="message text">
+                            <%= message.text.slice(0, 40) %>...
+                        </div>
+                        <a class="single" href="/message/<%= message.id %>">
+                            <button>View Post</button>
+                        </a>
                     </li>
+                    </br>
                     <% }); %>
                         <% } else {%>
                             <p> There are no messages to display...</p>
